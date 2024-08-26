@@ -1,0 +1,19 @@
+.header {
+  background-color: #044742; 
+    color: white;              /* Text color */
+    padding: 1rem;            /* Spacing around the content */
+    text-align: center;        /* Center the text horizontally */
+    width: 100%;               /* Ensure the header spans the full width */
+    height: 10vh;
+    box-sizing: border-box;   /* Include padding in the width calculation */
+    position: fixed;           /* Fix the header at the top */
+    top: 0;                    /* Position it at the top */
+    left: 0;                   /* Ensure it's aligned to the left */
+    z-index: 1000;   
+   
+}
+
+.header-title {
+    margin: 0;                 /* Remove default margin */
+    font-size: 2rem;           /* Adjust font size */
+}

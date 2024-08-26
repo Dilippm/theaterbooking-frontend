@@ -1,0 +1,103 @@
+/* Container styling */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0c0f14; /* Darker background with a subtle blue tint */
+    width: 100%;
+   
+}
+
+/* Form styling */
+.form {
+    background-color: #ffffff; /* Clean white background for better contrast */
+    padding: 30px;
+    border-radius: 12px; /* Slightly larger border radius for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 
+                0 2px 4px rgba(255, 255, 255, 0.6); /* Subtle 3D effect */
+    width: 100%;
+    max-width: 400px; /* Set a max-width for better responsiveness */
+    position: relative;
+}
+
+/* Heading styling */
+.heading {
+    margin-bottom: 24px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Form group styling */
+.formGroup {
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+.label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Input field styling */
+.input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 6px; /* Rounded corners for input fields */
+    border: 1px solid #ddd;
+    background-color: #f9f9f9; /* Slightly lighter background for input fields */
+    color: #333;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input:focus {
+    border-color: #24c70f; /* Change border color on focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); /* Add a subtle glow effect */
+    outline: none; /* Remove default outline */
+}
+
+/* Button styling */
+.button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff; /* Primary color for the button */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px; /* Rounded corners for the button */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+    transform: scale(1.02); /* Slight scale-up effect on hover */
+}
+
+.button:active {
+    background-color: #004494; /* Even darker shade for active state */
+}
+
+/* Error message styling */
+.error {
+    color: #e74c3c; /* Red color for error messages */
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Link styling */
+.link {
+    color: #0664c9; /* Matching color with the button */
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline; /* Underline on hover */
+}

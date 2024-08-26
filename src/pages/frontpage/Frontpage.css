@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    height: 100vh; /* Full height of the viewport */
+  }
+  
+  .left, .right {
+    flex: 1; /* Each will take 50% of the width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .left {
+    background-color: lightblue; /* Example background color */
+  }
+  
+  .right {
+    background-color: lightcoral; /* Example background color */
+  }
+  

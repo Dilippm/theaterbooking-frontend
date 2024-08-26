@@ -1,0 +1,12 @@
+html, body {
+  height: 100%; /* Ensure the body takes up the full viewport height */
+  margin: 0;    /* Remove default margin */
+}
+#root {
+  width: 100%;          /* Make the root container take up the full width */
+  height: 100vh;  
+  margin: 0 auto;    
+ 
+}
+/* src/App.css */
+

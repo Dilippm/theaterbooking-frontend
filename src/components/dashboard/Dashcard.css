@@ -1,0 +1,17 @@
+.dashcard {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #1a1a1a; /* Default text color for contrast */
+}
+
+.dashcard-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.dashcard-content {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white;
+  }
+  

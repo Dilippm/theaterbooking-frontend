@@ -1,0 +1,59 @@
+/* src/components/Button.css */
+
+
+.button {
+    border-radius: 8px;                  /* Rounded corners */
+    border: 1px solid transparent;       /* Initial border state */
+    padding: 0.8em 1.5em;                 /* Increased padding for a better click area */
+    font-size: 1em;                       /* Readable font size */
+    font-weight: 600;                     /* Slightly bolder text */
+    font-family: inherit;                 /* Inherit font family */
+    background-color: #007bff;            /* Primary background color */
+    color: #ffffff;                       /* White text for contrast */
+    cursor: pointer;                      /* Pointer cursor on hover */
+    transition: all 0.3s ease;            /* Smooth transition for all properties */
+    text-align: center;                   /* Center text horizontally */
+    border: 2px solid transparent;        /* Initial border state */
+    outline: none;                        /* Remove default outline */
+  }
+  
+  .button:hover {
+    background-color: #0056b3;            /* Darker background on hover */
+    border-color: #0056b3;                /* Border color on hover */
+  }
+  
+  .button:active {
+    background-color: #004080;            /* Even darker background on active (click) */
+    border-color: #004080;                /* Border color on active (click) */
+    transform: translateY(2px);           /* Slightly move down to mimic pressing */
+  }
+  
+ 
+  
+  .button:disabled {
+    background-color: #d6d6d6;            /* Light gray background for disabled state */
+    color: #a0a0a0;                       /* Gray text color for disabled state */
+    cursor: not-allowed;                  /* Change cursor to indicate disabled state */
+    border-color: #d6d6d6;                /* Border color for disabled state */
+  }
+ 
+/* src/components/Button.css */
+.create {
+  color: white; /* Remove quotes */
+  background-color: #123; /* Use hyphen instead of camelCase */
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  margin-left: 10px; /* Use hyphen instead of camelCase */
+  cursor: pointer;
+  width: 100px;
+}
+.create:hover {
+  background-color: #0056b3;            /* Darker background on hover */
+  border-color: #04305f;                /* Border color on hover */
+}
+
+.create:active {
+  background-color: #004080;            /* Even darker background on active (click) */
+  border-color: #004080;                /* Border color on active (click) */
+  transform: translateY(2px);           /* Slightly move down to mimic pressing */
+}
