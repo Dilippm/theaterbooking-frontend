@@ -8,7 +8,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
-
+    const [role, setRole] = useState('user'); // Default role
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -22,7 +22,7 @@ const Register = () => {
 
         try {
             // Mock registration function, replace with actual API call
-            const result = await register({ username, email, password,confirmPassword});
+            const result = await register({ username, email, password,confirmPassword,role});
             console.log('Registration successful:', result);
             navigate('/user/login'); // Redirect to home page
         } catch (error) {
@@ -33,6 +33,7 @@ const Register = () => {
             setUsername('');
             setPassword('');
             setConfirmPassword('');
+            setRole('user')
         }
     };
 
@@ -90,7 +91,41 @@ const Register = () => {
                     />
                    
                 </div>
-              
+                <div className="formGroup">
+                    <label className="label">Role:</label>
+                    <div className="roleOptions">
+                        <label>
+                            <input
+                                type="radio"
+                                value="user"
+                                checked={role === "user"}
+                                onChange={(e) => setRole(e.target.value)}
+                                className="radioInput"
+                            />
+                            User
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                value="owner"
+                                checked={role === "owner"}
+                                onChange={(e) => setRole(e.target.value)}
+                                className="radioInput"
+                            />
+                            Owner
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                value="admin"
+                                checked={role === "admin"}
+                                onChange={(e) => setRole(e.target.value)}
+                                className="radioInput"
+                            />
+                            Admin
+                        </label>
+                    </div>
+                </div>
                 <button type="submit" className="button">SignUp</button>
                 <div className="formGroup">
                     <p>Already have an account? <Link to="/user/login" className="link">Login</Link></p>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {updateProfile} from "../../api/AuthApi";
 import { handleUpload } from "../../api/CloudianryApi";
+import { setUser} from '../../redux/userSlice';
 import {
   Modal,
   Box,
@@ -30,7 +31,9 @@ const Profile = () => {
   const [email, setEmail] = useState(useSelector((state) => state.user?.user?.email));
   const [profileImage, setProfileImage] = useState(useSelector((state) => state.user?.user?.userimage)); // Replace with actual profile image path
   const dispatch = useDispatch();
-
+const id = useSelector((state) => state.user?.user?.id)
+const role = useSelector((state)=> state.user?.user?.role)
+console.log(id)
   const token = useSelector((state) => state.user?.token);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -59,14 +62,16 @@ const Profile = () => {
           Email: email,
           UserImage: uploadResult, // Uploaded image URL
         };
-        console.log("body:", requestBody);
+        
         try {
-          await updateProfile(requestBody, token); // Call your backend API
+          await updateProfile(requestBody, token,id); // Call your backend API
           // Handle successful update (e.g., show a success message)
           dispatch(setUser({
-            name,
+            username:name,
             email,
             userimage: uploadResult,
+            id:id,
+            role:role
           }));
           console.log('Profile updated successfully');
         } catch (error) {
@@ -83,10 +88,18 @@ const Profile = () => {
       Username: name,
       Email: email,
       UserImage: profileImage,
+      
     };
-    console.log("body:", requestBody);
+   
     try {
-      await updateProfile(requestBody, token); // Call your backend API
+      await updateProfile(requestBody, token,id); // Call your backend API
+      dispatch(setUser({
+        username:name,
+        email,
+        userimage: profileImage,
+        id:id,
+        role:role
+      }));
       // Handle successful update (e.g., show a success message)
       console.log('Profile updated successfully');
     } catch (error) {

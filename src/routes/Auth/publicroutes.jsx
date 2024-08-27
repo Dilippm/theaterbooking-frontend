@@ -10,7 +10,7 @@ const PublicRoutes = () => (
     <>
         <Header />
         <Sidebar />
-        <div style={{ marginLeft: '240px', marginTop: '64px', padding: '16px' }}> {/* Adjust margin-left to account for sidebar width */}
+        <div style={{ marginLeft: '226px', marginTop: '55px', paddingLeft: '16px',paddingTop:'16px',paddingRight:'5px' }}> {/* Adjust margin-left to account for sidebar width */}
             <Routes>
                 <Route path="/" element={<Dashboard />} />
                 {/* Add other public routes here if needed */}

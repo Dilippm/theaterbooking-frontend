@@ -1,29 +1,26 @@
 // src/components/Sidebar.jsx
 
 import React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, Box, Typography, Avatar, Button } from '@mui/material';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, Divider, Box, Typography, Avatar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
-
 import InsightsIcon from '@mui/icons-material/Insights';
 import CategoryIcon from '@mui/icons-material/Category';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import LockIcon from '@mui/icons-material/Lock';
+import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
+import SummarizeIcon from '@mui/icons-material/Summarize';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearUser, setIsLoggedIn } from '../../redux/userSlice'; // Adjust the import path as needed
-import { useNavigate } from "react-router-dom";
-import Profile from "../profile/Profile";
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
     const name = useSelector((state) => state.user?.user?.username);
+    const role = useSelector((state) => state.user?.user?.role);
     const userimage = useSelector((state) => state.user?.user?.userimage);
-    const user = {
-        name: name,
-        profileImage: '/path-to-your-profile-image.jpg' // Replace with actual profile image path
-    };
 
     const handleLogout = () => {
         navigate('/user/login');
@@ -44,20 +41,35 @@ const Sidebar = () => {
                     backgroundColor: '#2c6b49',
                     color: '#f5f5f5',
                     boxShadow: '0 4px 8px rgba(0, 0.5, 0, 0.5)',
+                   
                 },
             }}
         >
             <Box sx={{ padding: 2, display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                <Avatar alt={user.name} src={userimage} sx={{ width: 80, height: 80 }} />
+                <Avatar alt={name} src={userimage} sx={{ width: 80, height: 80 }} />
                 <Typography variant="h6" sx={{ marginTop: 1 }}>
                     {name}
                 </Typography>
                 <Divider sx={{ my: 2 }} />
             </Box>
             <List>
-                {/* <ListItem button sx={{ mb: 3, padding: 0 }}>
-                    <Profile />
-                </ListItem> */}
+                {/* Conditional items based on role */}
+                {isLoggedIn && (role === 'owner' || role === 'admin') && (
+                    <>
+                        <ListItem button sx={{ mb: 3 }}>
+                            <ListItemIcon>
+                            <MarkChatUnreadIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Chat" />
+                        </ListItem>
+                        <ListItem button sx={{ mb: 3 }}>
+                            <ListItemIcon>
+                                <SummarizeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Report" />
+                        </ListItem>
+                    </>
+                )}
                 <ListItem button sx={{ mb: 3 }}>
                     <ListItemIcon>
                         <HomeIcon />
@@ -83,7 +95,7 @@ const Sidebar = () => {
                     <ListItemText primary="Movies" />
                 </ListItem>
                 <Divider sx={{ backgroundColor: '#8d6e63' }} />
-                <ListItem button sx={{ mt: 2 }} onClick={isLoggedIn ? handleLogout : handleLogout}>
+                <ListItem button sx={{ mt: 2 }} onClick={handleLogout}>
                     <ListItemIcon>
                         {isLoggedIn ? <LockIcon /> : <LockOpenIcon />}
                     </ListItemIcon>
