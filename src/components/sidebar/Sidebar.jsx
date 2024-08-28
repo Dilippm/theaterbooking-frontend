@@ -10,6 +10,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import LockIcon from '@mui/icons-material/Lock';
 import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
 import SummarizeIcon from '@mui/icons-material/Summarize';
+import TheaterComedyIcon from '@mui/icons-material/TheaterComedy';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearUser, setIsLoggedIn } from '../../redux/userSlice'; // Adjust the import path as needed
 import { useNavigate } from 'react-router-dom';
@@ -27,6 +28,12 @@ const Sidebar = () => {
         dispatch(clearUser());
         dispatch(setIsLoggedIn(false)); // Set login status to false
     };
+    function handleNavigation() {
+        if(role ==='owner'){
+            navigate('/owner/theater');
+        }
+       
+      }
 
     return (
         <Drawer
@@ -70,7 +77,7 @@ const Sidebar = () => {
                         </ListItem>
                     </>
                 )}
-                <ListItem button sx={{ mb: 3 }}>
+                <ListItem button sx={{ mb: 3 }} onClick={() => navigate("/")}>
                     <ListItemIcon>
                         <HomeIcon />
                     </ListItemIcon>
@@ -82,12 +89,13 @@ const Sidebar = () => {
                     </ListItemIcon>
                     <ListItemText primary="Analytics" />
                 </ListItem>
-                <ListItem button sx={{ mb: 3 }}>
-                    <ListItemIcon>
-                        <InfoIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="My Bookings" />
-                </ListItem>
+                <ListItem button sx={{ mb: 3 }} onClick={handleNavigation}>
+    <ListItemIcon>
+      {role === 'owner' ? <TheaterComedyIcon /> : <InfoIcon />}
+    </ListItemIcon>
+    <ListItemText primary={role === 'owner' ? "Theater" : "My Bookings"} />
+</ListItem>
+
                 <ListItem button sx={{ mb: 3 }}>
                     <ListItemIcon>
                         <CategoryIcon />

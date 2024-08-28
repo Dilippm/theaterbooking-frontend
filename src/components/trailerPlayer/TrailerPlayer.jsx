@@ -6,8 +6,8 @@ const TrailerPlayer = ({ videoId }) => {
   const onReady = (event) => {
     const player = event.target;
     player.playVideo(); // Start playback
-    // Unmute after video starts to comply with autoplay policies
-    player.unMute();
+    // // Unmute after video starts to comply with autoplay policies
+    // player.unMute();
   };
 
   const onStateChange = (event) => {

@@ -26,8 +26,7 @@ export const register = async (credentials) => {
 
 
 export const updateProfile = async (credentials, token,id) => {
-  console.log("cred:",credentials)
-  console.log("id:",id)
+ 
   try {
     const response = await axios.put(
       `${import.meta.env.VITE_API_USER_AUTH_URL}/update_profile/${id}`,
