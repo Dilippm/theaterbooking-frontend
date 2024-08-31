@@ -58,6 +58,7 @@ const [theaterid,setTheaterId] = useState('')
     try {
       setTheaterId(theaterId)
       const response = await gettheaterById(theaterId, token); // Fetch theater data by ID
+      console.log(response)
       setSelectedTheater(response); // Set selected theater data
       setModalOpen(true); // Open the modal
     } catch (error) {
@@ -72,7 +73,7 @@ const [theaterid,setTheaterId] = useState('')
   const handleUpdate = async (theaterData) => {
     try {
       await updateTheater(theaterData, token, theaterid); // Call the update function
-      console.log('Updated theater data:', theaterData);
+    
       // Refresh theaters list or update state if needed
       const response = await gettheaters(id, token); // Refresh theater list
       setTheaters(response);

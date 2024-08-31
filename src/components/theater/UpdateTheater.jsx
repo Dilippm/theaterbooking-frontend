@@ -4,7 +4,8 @@ import { Add, Remove } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
-
+import Autocomplete from '@mui/material/Autocomplete';
+import { getMovies } from '../../api/movieApi'; // Import your API function to fetch movies
 const style = {
   position: 'absolute',
   top: '50%',
@@ -20,8 +21,10 @@ const style = {
 };
 
 export default function UpdateTheaterModal({ open, handleClose, handleUpdate, initialData }) {
+  console.log("inti:",initialData)
   const id = useSelector((state) => state.user?.user?.id);
-  
+  const token = useSelector((state)=>state?.user?.token)
+  const [movies, setMovies] = useState([]);
   const [theaterData, setTheaterData] = useState({
    
     TheaterName: initialData.TheaterName,
@@ -32,8 +35,28 @@ export default function UpdateTheaterModal({ open, handleClose, handleUpdate, in
     ShowTimings: initialData.ShowTimings, // Array of time strings initialized to empty strings
     Place: initialData.Place,
     State: initialData.State,
+    Movie:initialData.Movie
   });
-
+  useEffect(() => {
+    // Fetch movies when the modal opens
+    if (open) {
+      fetchMoviesList();
+    }
+  }, [open]);
+  const fetchMoviesList = async () => {
+    try {
+      const moviesList = await getMovies(token); // Assuming fetchMovies returns a list of movies
+    
+      const movieNames = moviesList.map((movie) => ({
+        id: movie.ID,
+        MovieName: movie.MovieName,
+      }));
+      setMovies(movieNames);
+    
+    } catch (error) {
+      console.error('Error fetching movies:', error);
+    }
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTheaterData((prevData) => ({
@@ -69,7 +92,7 @@ export default function UpdateTheaterModal({ open, handleClose, handleUpdate, in
 
   const handleShowTimingsChange = (index, e) => {
     const timeValue = e.target.value;
-    console.log("time:",timeValue)
+    
     const formattedTime = new Date(`1970-01-01T${timeValue}:00.000Z`).toISOString();
     console.log(formattedTime)
     const updatedTimings = [...theaterData.ShowTimings];
@@ -218,6 +241,30 @@ export default function UpdateTheaterModal({ open, handleClose, handleUpdate, in
               Add Show Timing
             </Button>
           </Grid>
+          <Grid item xs={12}>
+  <Autocomplete
+    value={movies.find(movie => movie.ID === theaterData.Movie) || null} // Find the selected movie object by ID
+    onChange={(event, newValue) => {
+      setTheaterData((prevData) => ({
+        ...prevData,
+        movie: newValue ? newValue.id : '', // Update the movie ID in the state
+      }));
+    }}
+    inputValue={theaterData.movieName || ''} // Bind to inputValue for custom typing
+    onInputChange={(event, newInputValue) => {
+      setTheaterData((prevData) => ({
+        ...prevData,
+        movieName: newInputValue, // Update movieName as user types
+      }));
+    }}
+    options={movies}
+    getOptionLabel={(option) => option.MovieName}
+    isOptionEqualToValue={(option, value) => option.id === value.id}
+    freeSolo
+    renderInput={(params) => <TextField {...params} label="Movie" />}
+  />
+</Grid>
+
           <Grid item xs={6}>
             <TextField
               fullWidth

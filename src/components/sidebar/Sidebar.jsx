@@ -29,12 +29,17 @@ const Sidebar = () => {
         dispatch(setIsLoggedIn(false)); // Set login status to false
     };
     function handleNavigation() {
+
         if(role ==='owner'){
             navigate('/owner/theater');
         }
        
       }
-
+function handleMovieNavigation() {
+    if(role==='admin'){
+        navigate('/movies/admin')
+    }
+}
     return (
         <Drawer
             variant="permanent"
@@ -96,7 +101,7 @@ const Sidebar = () => {
     <ListItemText primary={role === 'owner' ? "Theater" : "My Bookings"} />
 </ListItem>
 
-                <ListItem button sx={{ mb: 3 }}>
+                <ListItem button sx={{ mb: 3 }} onClick={handleMovieNavigation}>
                     <ListItemIcon>
                         <CategoryIcon />
                     </ListItemIcon>

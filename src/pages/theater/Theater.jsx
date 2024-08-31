@@ -58,6 +58,7 @@ const Theater = () => {
         price: pricesMap,
         showTimings: showTimingsArray,
       };
+      console.log(formattedData)
   
       // Call the API with the formatted data
       const response = await addtheater(formattedData, token);
