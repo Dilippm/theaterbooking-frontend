@@ -8,6 +8,7 @@ const userSlice = createSlice({
     user: null,
     token: null,
     isLoggedIn:false,
+    bookedSeats:[],
   },
   reducers: {
     setUser: (state, action) => {
@@ -19,12 +20,17 @@ const userSlice = createSlice({
     setIsLoggedIn: (state, action) => {
       state.isLoggedIn = action.payload;
     },
+    setBookedSeats:(state,action)=>{
+      state.bookedSeats = action.payload
+    },
     clearUser: (state) => {
       state.user = null;
       state.token = null;
+      state.isLoggedIn= false;
+      state.bookedSeats=[];
     },
   },
 });
 
-export const { setUser, setToken,setIsLoggedIn, clearUser } = userSlice.actions;
+export const { setUser, setToken,setIsLoggedIn,setBookedSeats, clearUser } = userSlice.actions;
 export default userSlice.reducer;
