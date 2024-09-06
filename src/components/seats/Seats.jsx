@@ -4,9 +4,11 @@ import { getBookedSeats } from '../../api/BookingApi';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBookedSeats } from '../../redux/userSlice';
 const Seats = ({ rows, columns, selectedSeats, price, handleSeatClick, time, date }) => {
+  console.log(time,date)
   const dispatch = useDispatch();
   const token = useSelector((state) => state.user?.token);
   const bookedSeats = useSelector((state) => state.user.bookedSeats);
+console.log(token);
 
   // Create an array of rows and columns for rendering
   const seatGrid = Array.from({ length: rows }, (_, rowIndex) => (
@@ -17,13 +19,13 @@ const Seats = ({ rows, columns, selectedSeats, price, handleSeatClick, time, dat
     const fetchBookedSeats = async () => {
       try {
         const response = await getBookedSeats(time, date, token);
-      
+   
         // Extract and deduplicate the selected seats
-        const allSelectedSeats = response.flatMap(item => item.SelectedSeats);
+        const allSelectedSeats = response?.flatMap(item => item.SelectedSeats);
        
         const uniqueSelectedSeats = [...new Set(allSelectedSeats)];
-        console.log(uniqueSelectedSeats)
-        dispatch(setBookedSeats(uniqueSelectedSeats));
+      
+         dispatch(setBookedSeats(uniqueSelectedSeats));
       } catch (error) {
         console.error('Failed to fetch booked seats:', error);
       }

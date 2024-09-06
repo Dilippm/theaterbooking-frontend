@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Bookings } from '../../pages/index'; // Adjust import paths as needed
+import { Bookings,UserBooking } from '../../pages/index'; // Adjust import paths as needed
 import Header from '../../components/headers/Header';
 import Sidebar from '../../components/sidebar/Sidebar';
+import PaymentPage from '../../pages/payments/payment';
 
 
 const BookingsPrivateRoutes = () => (
@@ -13,6 +14,8 @@ const BookingsPrivateRoutes = () => (
             <Routes>
               
                 <Route path="theaterbooking/:id" element={<Bookings/>}/>
+                <Route path="payment/:price" element ={<PaymentPage/>}/>
+                <Route path="userbookings" element ={<UserBooking/>}/>
                 {/* Add other public routes here if needed */}
             </Routes>
         </div>

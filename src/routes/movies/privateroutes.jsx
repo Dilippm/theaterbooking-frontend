@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { AdminMovies,MovieDetails } from '../../pages/index'; // Adjust import paths as needed
+import { AdminMovies,MovieDetails,UserMovies } from '../../pages/index'; // Adjust import paths as needed
 import Header from '../../components/headers/Header';
 import Sidebar from '../../components/sidebar/Sidebar';
 
@@ -13,6 +13,7 @@ const MoviePrivateRoutes = () => (
             <Routes>
                 <Route path="admin" element={<AdminMovies />} />
                 <Route path="moviedetails/:id" element={<MovieDetails/>}/>
+                <Route path="user" element={<UserMovies/>}/>
                 {/* Add other public routes here if needed */}
             </Routes>
         </div>

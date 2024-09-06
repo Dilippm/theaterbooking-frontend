@@ -3,18 +3,20 @@ import { Typography, List, ListItem, ListItemText, Divider, Button } from '@mui/
 import { useSelector, useDispatch } from 'react-redux';
 import { setBookedSeats } from '../../redux/userSlice';
 import {bookTicket,getBookedSeats} from "../../api/BookingApi"
-const BookingDetails = ({ selectedSeats,totalPrice, time, date, theater }) => {
+import { useNavigate } from 'react-router-dom';
+const BookingDetails = ({ selectedSeats,totalPrice, time, date, theater,movie }) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.user?.token);
   const id = useSelector((state) => state.user?.user?.id);
-  
+  const navigate = useNavigate()
 const credentials = {
   "theater":theater.TheaterName,
   "selectedSeats":selectedSeats,
   "time":time,
   "date":date,
   "user":id,
-  "price":`${totalPrice}`
+  "price":`${totalPrice}`,
+  "movie": movie
 }
   // Click handler for the "Book Now" button
   const handleBookNowClick = async () => {
@@ -25,8 +27,9 @@ const credentials = {
     const allSelectedSeats = response.flatMap(item => item.SelectedSeats);
    
     const uniqueSelectedSeats = [...new Set(allSelectedSeats)];
-    console.log(uniqueSelectedSeats)
-    dispatch(setBookedSeats(uniqueSelectedSeats));
+  
+   
+    navigate(`/bookings/payment/${totalPrice}`, { state: { credentials } });
     } catch (error) {
       console.error("Error booking the ticket:", error);
       // Handle the error here, such as showing an error message to the user.
@@ -58,6 +61,13 @@ const credentials = {
           <ListItemText
             primary={<Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>Theater</Typography>}
             secondary={theater?.TheaterName || 'N/A'}
+          />
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemText
+            primary={<Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>Movie</Typography>}
+            secondary={movie || ''}
           />
         </ListItem>
         <Divider />

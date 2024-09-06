@@ -42,7 +42,7 @@ const AdminMovies = () => {
         image: uploadResult,
         trailerId: movieData.trailerId,
       };
-  console.log("for:",formattedData)
+ 
       // // Call the API with the formatted data
       const response = await addMovie(formattedData, token);
      

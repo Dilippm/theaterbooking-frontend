@@ -28,11 +28,11 @@ const Bookings = () => {
     const fetchData = async () => {
       try {
         const response = await getTheatersByQuery(searchTheater, searchPlace, id, token);
-      
+   
         setData(response);
 
         // Extract unique theater names and details for buttons
-        const uniqueTheaters = [...new Set(response.map(item => ({
+        const uniqueTheaters = [...new Set(response.theater.map(item => ({
           TheaterName: item.TheaterName,
           Place: item.Place,
           ShowTimings: item.ShowTimings, // Include show timings
@@ -192,7 +192,7 @@ const Bookings = () => {
 
       {/* Render the Seats component only if a theater is selected */}
       {selectedTheater && (
-        <MainSeats rows={seats.rows} columns={seats.columns} time={selectedTime} date={selectedDate} theater = {selectedTheater}/>
+        <MainSeats rows={seats.rows} columns={seats.columns} time={selectedTime} date={selectedDate} theater = {selectedTheater} movie= {data.movie.MovieName} />
        
       )}
     </Container>

@@ -33,11 +33,17 @@ const Sidebar = () => {
         if(role ==='owner'){
             navigate('/owner/theater');
         }
+        if(role ==="user"){
+            navigate('/bookings/userbookings')
+        }
        
       }
 function handleMovieNavigation() {
     if(role==='admin'){
         navigate('/movies/admin')
+    }
+    if(role==='user'){
+        navigate('/movies/user')
     }
 }
     return (

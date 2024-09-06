@@ -3,7 +3,7 @@ import { Grid, Paper } from '@mui/material';
 import Seats from './Seats';
 import BookingDetails from './BookingDetails';
 
-const MainSeats = ({ rows, columns, time, date, theater }) => {
+const MainSeats = ({ rows, columns, time, date, theater,movie }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0); // State to track total price
  
@@ -78,6 +78,7 @@ const MainSeats = ({ rows, columns, time, date, theater }) => {
             time={time}
             date={date}
             theater={theater}
+            movie ={movie}
           />
         </Paper>
       </Grid>

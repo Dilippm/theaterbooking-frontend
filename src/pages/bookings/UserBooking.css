@@ -1,0 +1,80 @@
+.booking-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.booking-card {
+  width: 100%;
+  background-color: #578a73; /* Forest green background */
+  border: 1px solid #1b4332; /* Darker green border */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slightly more prominent shadow */
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.2s ease-in-out;
+  color: #f0f4f4; /* Light text color for contrast */
+}
+
+.booking-card:hover {
+  transform: translateY(-2px);
+}
+
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.booking-header h2 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0;
+  margin-bottom: 16px;
+  
+}
+
+.theater-name {
+  font-size: 1rem;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 16px;
+ 
+}
+
+.booking-details {
+  margin-bottom: 16px;
+}
+
+.booking-details p {
+  font-size: 1rem;
+  margin: 0;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.booking-payment-id {
+  margin-bottom: 10px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.booking-payment-id p {
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 16px;
+
+}
+
+.booking-price p {
+  font-weight: bold;
+  color: #fff;
+  font-size: 1rem;
+}
