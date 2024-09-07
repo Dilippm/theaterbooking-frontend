@@ -6,7 +6,7 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import Profile from '../profile/Profile';
 import { useSelector } from 'react-redux';
 const Header = () => {
-    const balance = "$1,234.56";
+    const balance = `${useSelector((state) => state.user?.user.wallet)}` || "0"
 const isLoggedIn = useSelector((state) => state.user?.isLoggedIn)
     return (
         <AppBar position="fixed" sx={{ backgroundColor: '#004d40',boxShadow: '0 4px 8px rgba(0, 0.6, 0, 0.8)', }}>
@@ -24,7 +24,7 @@ const isLoggedIn = useSelector((state) => state.user?.isLoggedIn)
                         <AccountBalanceWalletIcon />
                     </IconButton>
                     <Typography variant="h6" sx={{ marginLeft: 1 }}>
-                        {balance}
+                    ₹{balance}
                     </Typography>
                 </Box>
                 

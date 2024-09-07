@@ -7,6 +7,7 @@ import PublicRoutes from './Auth/publicroutes';
 import OwnerPrivateRoutes from './owner/privateroutes';
 import MoviePrivateRoutes from './movies/privateroutes';
 import BookingsPrivateRoutes from './bookings/privateroutes'
+import ReportPrivateRoutes from './Reports/privateroutes';
 
 const AppRoutes = () => (
     <Routes>
@@ -17,6 +18,7 @@ const AppRoutes = () => (
        <Route path="/owner/*" element ={<OwnerPrivateRoutes/>}/>
        <Route path='/movies/*' element={<MoviePrivateRoutes/>}/>
        <Route path='/bookings/*' element={<BookingsPrivateRoutes/>}/>
+       <Route path='/report/*' element={<ReportPrivateRoutes/>}/>
     </Routes>
 );
 

@@ -80,12 +80,12 @@ function handleMovieNavigation() {
                             </ListItemIcon>
                             <ListItemText primary="Chat" />
                         </ListItem>
-                        <ListItem button sx={{ mb: 3 }}>
-                            <ListItemIcon>
-                                <SummarizeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Report" />
-                        </ListItem>
+                        <ListItem button sx={{ mb: 3 }} onClick={() => navigate("/report/report")}>
+        <ListItemIcon>
+          <SummarizeIcon />
+        </ListItemIcon>
+        <ListItemText primary="Report" />
+      </ListItem>
                     </>
                 )}
                 <ListItem button sx={{ mb: 3 }} onClick={() => navigate("/")}>
@@ -100,13 +100,14 @@ function handleMovieNavigation() {
                     </ListItemIcon>
                     <ListItemText primary="Analytics" />
                 </ListItem>
-                <ListItem button sx={{ mb: 3 }} onClick={handleNavigation}>
-    <ListItemIcon>
-      {role === 'owner' ? <TheaterComedyIcon /> : <InfoIcon />}
-    </ListItemIcon>
-    <ListItemText primary={role === 'owner' ? "Theater" : "My Bookings"} />
-</ListItem>
-
+                {role !== 'admin' && (
+        <ListItem button sx={{ mb: 3 }} onClick={handleNavigation}>
+          <ListItemIcon>
+            {role === 'owner' ? <TheaterComedyIcon /> : <InfoIcon />}
+          </ListItemIcon>
+          <ListItemText primary={role === 'owner' ? "Theater" : "My Bookings"} />
+        </ListItem>
+      )}
                 <ListItem button sx={{ mb: 3 }} onClick={handleMovieNavigation}>
                     <ListItemIcon>
                         <CategoryIcon />
