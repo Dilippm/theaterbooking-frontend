@@ -94,7 +94,7 @@ function handleMovieNavigation() {
                     </ListItemIcon>
                     <ListItemText primary="Dashboard" />
                 </ListItem>
-                <ListItem button sx={{ mb: 3 }}>
+                <ListItem button sx={{ mb: 3 }} onClick={()=> navigate("/analytics/analytics")}>
                     <ListItemIcon>
                         <InsightsIcon />
                     </ListItemIcon>
