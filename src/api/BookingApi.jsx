@@ -56,6 +56,7 @@ export const getTheatersByQuery = async (name = '', place = '', id, token) => {
         }
       );
      
+     
       
       return response.data;
     } catch (error) {
@@ -111,6 +112,26 @@ export const getTheatersByQuery = async (name = '', place = '', id, token) => {
       return response.data;
     } catch (error) {
       console.error('Error getting booking details:', error);
+      throw error;
+    }
+  }
+
+
+  export const getReservedSeats = async(time,date,token) =>{
+    try {
+      const response = await axios.get(
+        `${VITE_API_RESERVATION_URL}/get_booking/${time}/${date}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`, // Include the authorization header
+          },
+        }
+      );
+     
+      
+      return response.data;
+    } catch (error) {
+      console.error('Error updating profile:', error);
       throw error;
     }
   }
