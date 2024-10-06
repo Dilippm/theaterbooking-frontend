@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { TextField, Button, FormControlLabel, Radio, RadioGroup, FormLabel, Alert, Box } from '@mui/material';
 import '../login/Login.css'
 import {register} from "../../api/AuthApi";
+import {Zoom, ToastContainer, toast } from 'react-toastify';    
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
 const Register = () => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
@@ -17,17 +20,26 @@ const Register = () => {
         
         if (password !== confirmPassword) {
             setError('Passwords do not match');
+            toast.error(error)
             return;
         }
 
         try {
             // Mock registration function, replace with actual API call
-            const result = await register({ username, email, password,confirmPassword,role});
-            console.log('Registration successful:', result);
+            await register({ username, email, password,confirmPassword,role});
+            // Show the success toast and wait for it to complete
+         await new Promise((resolve) => {
+            toast.success('Registration Successful', {
+                onClose: resolve, // Resolve the promise when the toast closes
+                autoClose: 2000,   // Optional: Duration before the toast auto-closes
+            });
+        });
             navigate('/user/login'); // Redirect to home page
-        } catch (error) {
-            console.error('Signup failed:', error);
+        } catch (err) {
+            console.error('Signup failed:', err);
             setError('Signup failed. Please check your credentials');
+            toast.error(error)
+        
         } finally {
             setEmail('');
             setUsername('');
@@ -39,9 +51,16 @@ const Register = () => {
 
     return (
         <div className="container">
+             <ToastContainer
+                className="custom-toast-container"
+                toastClassName="custom-toast-message"
+                position="top-center"
+                transition={Zoom}
+                autoClose={5000} // Optional: Set auto-close timing
+            />
             <form onSubmit={handleSubmit} className="form">
                 <h2 className="heading">Register</h2>
-                {error && <p className="error">{error}</p>}
+                 
                 <div className="formGroup">
                     <label htmlFor="email" className="label">Email:</label>
                     <input

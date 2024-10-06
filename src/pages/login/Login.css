@@ -101,3 +101,14 @@
 .link:hover {
     text-decoration: underline; /* Underline on hover */
 }
+
+.custom-toast-container {
+    font-size: 1.1rem; /* Adjust size as needed */
+    width: 500px !important; /* Adjust width as needed */
+}
+
+.custom-toast-message {
+    padding: 10px !important; /* Adjust padding */
+    background-color: #f8d7da !important; /* Optional: Customize background */
+    color: #721c24 !important; /* Optional: Customize text color */
+}

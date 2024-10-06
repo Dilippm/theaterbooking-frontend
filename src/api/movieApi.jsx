@@ -91,4 +91,21 @@ export const getMovies = async (token) => {
       throw error;
     }
   };
-  
+  export const deleteMovieById = async(id,token) =>{
+    try {
+      const response = await axios.delete(
+        `${VITE_API_MOVIE_URL}/delete_movie/${id}`,
+       
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`, // Include the authorization header
+          },
+        }
+      );
+
+      return response.data;
+    } catch (error) {
+      console.error('Error delete movie:', error);
+      throw error;
+    }
+  }

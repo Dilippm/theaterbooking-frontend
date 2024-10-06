@@ -45,7 +45,7 @@ const AdminMovies = () => {
  
       // // Call the API with the formatted data
       const response = await addMovie(formattedData, token);
-     
+    
       setMovieRefresh(prev => !prev); // Toggle the refresh state
       console.log('movie added successfully:', response);
     } catch (error) {

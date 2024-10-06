@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useSelector } from 'react-redux';
-import { getMovies,getMovieById,updateMovie } from '../../../api/movieApi'; 
+import { getMovies,getMovieById,updateMovie,deleteMovieById } from '../../../api/movieApi'; 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateMovieModal from '../movieModal/updateModal';
@@ -44,7 +44,7 @@ export default function MovieTable({ refresh }) {
       try {
         const response = await getMovies(token); 
         setMovies(response);
-        console.log(response);
+       
       } catch (error) {
         console.error('Failed to fetch theaters:', error);
       }
@@ -68,7 +68,15 @@ export default function MovieTable({ refresh }) {
       console.error('Failed to fetch theater details:', error);
     }
   };
-
+const handleDelete = async(movieID) =>{
+  try {
+   await deleteMovieById(movieID, token);
+    const response = await getMovies(token); 
+    setMovies(response);
+  } catch (error) {
+    console.error('Failed to delete  movie', error);
+  }
+}
   const handleCloseModal = () => {
     setModalOpen(false);
     setSelectedTheater(null);
@@ -86,7 +94,6 @@ export default function MovieTable({ refresh }) {
         trailerId: movieData.trailerId,
       };
       await updateMovie(formattedData, token, movieId); 
-      console.log('Updated theater data:', movieData);
       const response = await getMovies(token); 
       setMovies(response);
       handleCloseModal();
@@ -124,7 +131,9 @@ export default function MovieTable({ refresh }) {
                     sx={{ color: 'blue' }}
                     onClick={() => handleEdit(movie.ID)}
                   />
-                  <DeleteIcon sx={{ color: 'red' }} />
+                  <DeleteIcon sx={{ color: 'red' }}
+                   onClick={() => handleDelete(movie.ID)}
+                  />
                 </StyledTableCell>
               </StyledTableRow>
             ))}

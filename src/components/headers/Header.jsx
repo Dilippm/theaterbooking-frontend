@@ -14,7 +14,7 @@ const isLoggedIn = useSelector((state) => state.user?.isLoggedIn)
             <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 {/* Left side: App Name */}
                 <Typography variant="h6" sx={{ flexGrow: 1, textAlign: 'center' }}>
-                    App Name
+                   Book My Movie
                 </Typography>
                    
                 {/* Right side: Wallet Balance */}
