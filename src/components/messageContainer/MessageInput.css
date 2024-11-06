@@ -1,0 +1,29 @@
+.message-input-form {
+    padding: 1rem 0.5rem; /* Equivalent to px-4 my-3 */
+}
+
+.input-container {
+    position: relative; /* To position the button correctly */
+    width: 100%; /* Full width */
+}
+
+.message-input {
+    border: 1px solid #4b5563; /* Equivalent to border-gray-600 */
+    background-color: #374151; /* Equivalent to bg-gray-700 */
+    color: white; /* Text color */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    padding: 0.625rem; /* Equivalent to p-2.5 */
+    width: 100%; /* Full width */
+    font-size: 0.875rem; /* Equivalent to text-sm */
+}
+
+.send-button {
+    position: absolute; /* Positioned inside the input container */
+    right: 0.5rem; /* Aligns with the right padding */
+    top: 50%; /* Vertically centers the button */
+    transform: translateY(-50%); /* Adjusts for perfect centering */
+    background: transparent; /* Button background */
+    border: none; /* Remove default button border */
+    color: white; /* Icon color */
+    cursor: pointer; /* Pointer cursor on hover */
+}

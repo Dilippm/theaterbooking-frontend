@@ -1,0 +1,7 @@
+.messages-container {
+    padding: 1rem; /* Add padding for aesthetics */
+    flex: 1; /* Allow this div to grow and take available space */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    background-color: #f9f9f9; /* Optional: Add a light background color */
+    height: calc(100vh - 100px); /* Optional: Set a height based on your layout */
+}

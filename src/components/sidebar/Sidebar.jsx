@@ -74,7 +74,7 @@ function handleMovieNavigation() {
                 {/* Conditional items based on role */}
                 {isLoggedIn && (role === 'owner' || role === 'admin') && (
                     <>
-                        <ListItem button sx={{ mb: 3 }}>
+                        <ListItem button sx={{ mb: 3 }} onClick={() => navigate("/chats/userchat")}>
                             <ListItemIcon>
                             <MarkChatUnreadIcon/>
                             </ListItemIcon>

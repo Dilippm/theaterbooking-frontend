@@ -1,0 +1,52 @@
+.chat {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Add some space between messages */
+}
+
+.chat-end {
+    justify-content: flex-end; /* Align messages from the user to the right */
+}
+
+.chat-start {
+    justify-content: flex-start; /* Align received messages to the left */
+}
+
+.chat-image {
+    margin-right: 10px; /* Space between avatar and message */
+}
+
+.avatar-img {
+    width: 40px; /* Width of the avatar */
+    height: 40px; /* Height of the avatar */
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden; /* Hide overflow for the rounded image */
+}
+
+.avatar-img img {
+    width: 100%; /* Make image take the full width */
+    height: 100%; /* Make image take the full height */
+}
+
+.chat-bubble {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%; /* Limit the width of the message bubble */
+    color: white; /* Text color */
+}
+
+.bubble-sent {
+    background-color: #3b82f6; /* Sent message background color */
+}
+
+.bubble-received {
+    background-color: #4b5563; /* Received message background color */
+}
+
+.chat-footer {
+    opacity: 0.5; /* Slightly transparent footer */
+    font-size: 12px; /* Small font size for time */
+    margin-top: 5px; /* Space above footer */
+    display: flex;
+    align-items: center;
+}

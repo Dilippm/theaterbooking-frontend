@@ -1,22 +1,27 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // LocalStorage as the default storage
+import storage from 'redux-persist/lib/storage';
 import userReducer from './userSlice'; // Adjust the path as needed
 
 // Configuration for redux-persist
 const persistConfig = {
-  key: 'root', // Key for the persisted state
+  key: 'user', // Key specific to the user slice
   storage, // Storage method (localStorage)
+  whitelist: ['user'], // Persist only the user slice
 };
 
-// Create a persisted reducer
-const persistedReducer = persistReducer(persistConfig, userReducer);
+// Combine all reducers (in case there are more in the future)
+const rootReducer = combineReducers({
+  user: userReducer,
+  // other reducers can go here
+});
+
+// Create a persisted reducer for the root reducer
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // Create Redux store with the persisted reducer
 const store = configureStore({
-  reducer: {
-    user: persistedReducer, // Apply the persisted reducer
-  },
+  reducer: persistedReducer,
 });
 
 // Create a persistor for redux-persist

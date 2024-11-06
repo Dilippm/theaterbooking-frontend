@@ -9,6 +9,7 @@ import MoviePrivateRoutes from './movies/privateroutes';
 import BookingsPrivateRoutes from './bookings/privateroutes'
 import ReportPrivateRoutes from './Reports/privateroutes';
 import AnalyticsPrivateRoutes from './Analytics/privateRoutes';
+import ChatPrivateRoutes from './Chats/privateRoutes';
 const AppRoutes = () => (
     <Routes>
         {/* Define the main routes and render UserAuthRoutes for authentication-related routes */}
@@ -20,6 +21,7 @@ const AppRoutes = () => (
        <Route path='/bookings/*' element={<BookingsPrivateRoutes/>}/>
        <Route path='/report/*' element={<ReportPrivateRoutes/>}/>
        <Route path='/analytics/*' element={<AnalyticsPrivateRoutes/>}/>
+       <Route path='/chats/*' element={<ChatPrivateRoutes/>}/>
     </Routes>
 );
 
